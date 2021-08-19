@@ -30,7 +30,7 @@ dropdown=dcc.Dropdown(id="dropdown",
              value="YEAR",
           )
 
-init_map=open('data/zones.html','r').read()
+init_map=open('../data/zones.html','r').read()
 
 plot = html.Iframe(
                    id='geo-graph',
@@ -63,9 +63,9 @@ app.layout = dbc.Container(
 # FUNCTION - BEGIN
 def make_graph(value):
     if(value==2016):
-        return open('data/zones.html','r').read()
+        return open('../data/zones.html','r').read()
     else:
-        return open('data/zones2.html','r').read()
+        return open('../data/zones2.html','r').read()
 # FUNCTION - END
 
 
