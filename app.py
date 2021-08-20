@@ -184,4 +184,40 @@ if __name__ == "__main__":
 import plotly.express as px
 
 
+import dash
+import dash_core_components as dcc
+import dash_html_components as html
+import plotly.express as px
+from dash.dependencies import Input, Output
+import pandas as pd
 
+app = dash.Dash(__name__)
+
+data = pd.read_csv('../data/df_merged_final_vars.csv')
+investments = pd.melt(data, id_vars=['anio_corte','municipio'], value_vars=['inversion_transformacion','inversion_conectividad'])
+municipalities = list(investments['municipio'].unique())
+
+# fig = px.line(investments[investments['municipio']=='medellin'], x="anio_corte", y="value", color='variable', title='Inversión MinTC - Transformación en Medellín')
+# fig.show()
+
+app.layout = html.Div([
+    dcc.Dropdown(
+        id="fig_dropdown",
+        options=[{"label": x, "value": x} 
+                 for x in municipalities],
+        placeholder='Select a municipality',
+        searchable=True
+    ),
+    dcc.Graph(id="line-chart"),
+])
+
+@app.callback(
+    Output("line-chart", "figure"), 
+    [Input("fig_dropdown", "value")])
+def update_line_chart(value):
+    fig = px.line(investments[investments['municipio']==value], 
+        x="anio_corte", y="value", color='variable')
+    return fig
+
+if __name__ == '__main__':
+    app.run_server(debug=True)
