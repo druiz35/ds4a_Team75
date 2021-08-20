@@ -1,0 +1,33 @@
+<mat-sidenav-container autosize hasBackdrop="false">
+    <mat-icon mat-list-icon [ngStyle]="{'color':'white'}" (click)="isExpanded = !isExpanded">menu</mat-icon>
+    <mat-sidenav #sidenav mode="over" opened="true">
+        <mat-nav-list>
+            <mat-list-item>
+                <mat-icon mat-list-icon [ngStyle]="{'color':'white'}" (click)="isExpanded = !isExpanded">menu</mat-icon>
+            </mat-list-item>
+
+            <mat-list-item>
+                <mat-icon mat-list-icon [ngStyle]="{'color':'white'}" [routerLink]="'acerca'" >info</mat-icon>
+                <span *ngIf="isExpanded" [ngStyle]="{'color':'white'}" [routerLink]="'acerca'" >Acerca De</span>
+            </mat-list-item>
+
+            <mat-list-item>
+                <mat-icon mat-list-icon [ngStyle]="{'color':'white'}" [routerLink]="'data-dashboard'" >poll</mat-icon>
+                <span *ngIf="isExpanded" [ngStyle]="{'color':'white'}" [routerLink]="'data-dashboard'">Análisis de Datos</span>
+            </mat-list-item>
+
+            <mat-list-item>
+                <mat-icon mat-list-icon [ngStyle]="{'color':'white'}" [routerLink]="'modelos'" >mediation</mat-icon>
+                <span *ngIf="isExpanded" [ngStyle]="{'color':'white'}" [routerLink]="'modelos'">Descripción de Modelos</span>
+            </mat-list-item>
+
+            <mat-list-item>
+                <mat-icon mat-list-icon [ngStyle]="{'color':'white'}" [routerLink]="'iyr'" >groups</mat-icon>
+                <span *ngIf="isExpanded" [ngStyle]="{'color':'white'}" [routerLink]="'iyr'">Interpretación y Recomendaciones del Equipo</span>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</mat-sidenav-container>

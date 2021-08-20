@@ -1,0 +1,13 @@
+mat-sidenav-container {
+    height: 100%;
+    position: fixed;
+}
+
+mat-nav-list {                             
+    background-color: black;
+    overflow: hidden;
+}
+
+.content {
+    padding-left: 7%;
+}
