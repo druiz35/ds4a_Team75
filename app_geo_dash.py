@@ -21,16 +21,11 @@ app = dash.Dash(__name__,
 # HTML CONTROLS - START
 
 dropdown=dcc.Dropdown(id="dropdown",
-             options=[
-                 {"label": 2016, "value": 2016},
-                 {"label": 2017, "value": 2017},
-                 {"label": 2018, "value": 2018},
-                 {"label": 2019, "value": 2019}
-               ],
-             value="YEAR",
+             options=[{'label': x, 'value': x} for x in [2016,2017,2018,2019]],
+             value="Year",
           )
 
-init_map=open('../data/zones.html','r').read()
+init_map=open('../data/maps_html/map_foliumTotal2016.html','r').read()
 
 plot = html.Iframe(
                    id='geo-graph',
@@ -63,9 +58,13 @@ app.layout = dbc.Container(
 # FUNCTION - BEGIN
 def make_graph(value):
     if(value==2016):
-        return open('../data/zones.html','r').read()
-    else:
-        return open('../data/zones2.html','r').read()
+        return open('../data/maps_html/map_foliumTotal2016.html','r').read()
+    elif(value==2017):
+        return open('../data/maps_html/map_foliumTotal2017.html','r').read()
+    elif(value==2018):
+        return open('../data/maps_html/map_foliumTotal2018.html','r').read()
+    elif(value==2019):
+        return open('../data/maps_html/map_foliumTotal2019.html','r').read()
 # FUNCTION - END
 
 
