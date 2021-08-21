@@ -187,15 +187,35 @@ import dash_html_components as html
 import plotly.express as px
 from dash.dependencies import Input, Output
 import pandas as pd
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 
 app = dash.Dash(__name__)
 
-data = pd.read_csv('../data/df_merged_final_vars.csv')
-investments = pd.melt(data, id_vars=['anio_corte','municipio'], value_vars=['inversion_transformacion','inversion_conectividad'])
+data = pd.read_csv('../data/df_vars_modelamiento.csv')
+investments = pd.melt(data, id_vars=['anio_corte','municipio'], value_vars=['inversion_transformacion','inversion_conectividad', 'inversion'])
 municipalities = list(investments['municipio'].unique())
 
 ## Lineplot:
-# fig = px.line(investments[investments['municipio']=='medellin'], x="anio_corte", y="value", color='variable', title='Inversión MinTC - Transformación en Medellín')
+
+# fig = make_subplots(specs=[[{"secondary_y": True}]])
+# fig.add_trace(
+#     go.Scatter(x=data[data['municipio']=='medellin']["anio_corte"], y=data[data['municipio']=='medellin']["inversion_transformacion"], name="Inversión MinTC - Transformación en Medellín"),
+#     secondary_y=False,
+# )
+# fig.add_trace(
+#     go.Scatter(x=data[data['municipio']=='medellin']["anio_corte"], y=data[data['municipio']=='medellin']["inversion_conectividad"], name="Inversión MinTC - Conectividad en Medellín"),
+#     secondary_y=False,
+# )
+# fig.add_trace(
+#     go.Scatter(x=data[data['municipio']=='medellin']["anio_corte"], y=data[data['municipio']=='medellin']["inversion"], name="Inversión MinTC - Total en Medellín"),
+#     secondary_y=False,
+# )
+
+# fig.add_trace(
+#     go.Scatter(x=data[data['municipio']=='medellin']["anio_corte"], y=data[data['municipio']=='medellin']["componente_de_resultados"], name="Índice Calidad de Vida en Medellín"),
+#     secondary_y=True,
+# )
 # fig.show()
 init_map = open('../data/maps_html/map_foliumTotal2016.html','r').read()
 
@@ -235,8 +255,26 @@ app.layout = html.Div(children=[
     Output("line-chart", "figure"), 
     [Input("fig_dropdown", "value")])
 def update_line_chart(value):
-    fig = px.line(investments[investments['municipio']==value], 
-        x="anio_corte", y="value", color='variable')
+    # fig = px.line(investments[investments['municipio']==value], 
+    #     x="anio_corte", y="value", color='variable')
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+    fig.add_trace(
+        go.Scatter(x=data[data['municipio']==value]["anio_corte"], y=data[data['municipio']==value]["inversion_transformacion"], name="Inversión MinTC - Transformación"),
+        secondary_y=False,
+    )
+    fig.add_trace(
+        go.Scatter(x=data[data['municipio']==value]["anio_corte"], y=data[data['municipio']==value]["inversion_conectividad"], name="Inversión MinTC - Conectividad"),
+        secondary_y=False,
+    )
+    fig.add_trace(
+        go.Scatter(x=data[data['municipio']==value]["anio_corte"], y=data[data['municipio']==value]["inversion"], name="Inversión MinTC - Total"),
+        secondary_y=False,
+    )
+
+    fig.add_trace(
+        go.Scatter(x=data[data['municipio']==value]["anio_corte"], y=data[data['municipio']==value]["componente_de_resultados"], name="Índice Calidad de Vida"),
+        secondary_y=True,
+    )
     return fig
 # Callback for maps:
 @app.callback(
