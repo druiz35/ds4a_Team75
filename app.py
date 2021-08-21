@@ -197,18 +197,40 @@ municipalities = list(investments['municipio'].unique())
 ## Lineplot:
 # fig = px.line(investments[investments['municipio']=='medellin'], x="anio_corte", y="value", color='variable', title='Inversión MinTC - Transformación en Medellín')
 # fig.show()
+init_map = open('../data/maps_html/map_foliumTotal2016.html','r').read()
 
-app.layout = html.Div([
-    dcc.Dropdown(
-        id="fig_dropdown",
-        options=[{"label": x, "value": x} 
-                 for x in municipalities],
-        placeholder='Select a municipality',
-        searchable=True
-    ),
-    dcc.Graph(id="line-chart"),
+app.layout = html.Div(children=[
+    # Linechart:
+    html.Div([
+        dcc.Dropdown(
+            id="fig_dropdown",
+            options=[{"label": x, "value": x} for x in municipalities],
+            placeholder='Select a municipality',
+            searchable=True
+        ),
+        dcc.Graph(id="line-chart"),
+    ]),
+    # Maps:
+    html.Div(children=[
+        dcc.Dropdown(
+            id="year",
+            options=[{"label": x, "value": x} for x in [2016,2017,2018,2019]],
+            placeholder="Select a year",
+        ),
+        dcc.Dropdown(
+            id="type_of_investment",
+            options=[{"label": x, "value": x} for x in ['Inversión Total', 'Inversión en Conectividad', 'Inversión en Transformación']],
+            placeholder="Select a type of investment",
+        ),
+        html.Iframe(
+                   id='geo-graph',
+                   srcDoc=init_map,
+                   width='100%',
+                   height='600'),
+    ])
 ])
 
+# Callback for lineplot:
 @app.callback(
     Output("line-chart", "figure"), 
     [Input("fig_dropdown", "value")])
@@ -216,6 +238,40 @@ def update_line_chart(value):
     fig = px.line(investments[investments['municipio']==value], 
         x="anio_corte", y="value", color='variable')
     return fig
+# Callback for maps:
+@app.callback(
+    Output("geo-graph", "srcDoc"), 
+    Input("year", "value"),
+    Input("type_of_investment", "value"))
+def update_geo_graph(year, type_of_investment):
+    if type_of_investment == 'Inversión Total':
+        if(year==2016):
+            return open('../data/maps_html/map_foliumTotal2016.html','r').read()
+        elif(year==2017):
+            return open('../data/maps_html/map_foliumTotal2017.html','r').read()
+        elif(year==2018):
+            return open('../data/maps_html/map_foliumTotal2018.html','r').read()
+        elif(year==2019):
+            return open('../data/maps_html/map_foliumTotal2019.html','r').read()
+    elif type_of_investment == 'Inversión en Conectividad':
+        if(year==2016):
+            return open('../data/maps_html/map_foliumConectividad2016.html','r').read()
+        elif(year==2017):
+            return open('../data/maps_html/map_foliumConectividad2017.html','r').read()
+        elif(year==2018):
+            return open('../data/maps_html/map_foliumConectividad2018.html','r').read()
+        elif(year==2019):
+            return open('../data/maps_html/map_foliumConectividad2019.html','r').read()
+    elif type_of_investment == 'Inversión en Transformación':
+        if(year==2016):
+            return open('../data/maps_html/map_foliumTransformación2016.html','r').read()
+        elif(year==2017):
+            return open('../data/maps_html/map_foliumTransformación2017.html','r').read()
+        elif(year==2018):
+            return open('../data/maps_html/map_foliumTransformación2018.html','r').read()
+        elif(year==2019):
+            return open('../data/maps_html/map_foliumTransformación2019.html','r').read()
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
