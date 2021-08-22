@@ -1,186 +1,4 @@
-"""
-*****BASIC DASH DASHBOARD******
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-import plotly.express as px
-import pandas as pd
-
-external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-colors = {
-    "background": "#111111",
-    "text": "#7FDBFF"
-}
-
-df = pd.DataFrame({
-    "Fruit": ["Apples", "Oranges", "Bananas", "Apples", "Oranges", "Bananas"],
-    "Amount": [4, 1, 2, 2, 4, 5],
-    "City": ["SF", "SF", "SF", "Montreal", "Montreal", "Montreal"]
-})
-
-fig = px.bar(df, x="Fruit", y="Amount", color="City", barmode="group")
-fig.update_layout(
-    plot_bgcolor=colors["background"],
-    paper_bgcolor=colors["background"],
-    font_color=colors["text"]
-)
-
-app.layout = html.Div(
-    style={"backgroundColor": colors["background"]}, 
-    children=[
-        html.H1(
-            children="My First Dash App", 
-            style={"textAlign": "center", "color": colors["text"]}),
-        html.Div(
-            children='''Dash: A web application framework for Python.''', 
-            style={"textAlign": "center", "color": colors["text"]}),
-        dcc.Graph(
-            id="example-graph",
-            figure=fig
-    )
-])
-if __name__ == "__main__":
-    app.run_server(debug=True)
-"""
-
-"""
-******SIMPLE TABLE******
-import dash
-import dash_html_components as html
-import pandas as pd
-
-df = pd.read_csv('https://gist.githubusercontent.com/chriddyp/c78bf172206ce24f77d6363a2d754b59/raw/c353e8ef842413cae56ae3920b8fd78468aa4cb2/usa-agricultural-exports-2011.csv')
-def generate_table(dataframe, max_rows=10):
-    return html.Table([
-        html.Thead(
-            html.Tr([html.Th(col) for col in dataframe.columns])
-        ),
-        html.Tbody([
-            html.Tr([
-                html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
-            ]) for i in range(min(len(dataframe), max_rows))
-        ])
-    ])
-
-external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-app.layout = html.Div(children=[
-    html.H4(children="US Agriculture Exports (2011)"),
-    generate_table(df)
-])
-if __name__ == "__main__":
-    app.run_server(debug=True)
-"""
-
-"""
-******INTERACTIVE SCATTER PLOT******
-import dash
-import dash_core_components as doc
-import dash_html_components as html
-import plotly.express as px
-import pandas as pd
-
-external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-df = pd.read_csv('https://gist.githubusercontent.com/chriddyp/5d1ea79569ed194d432e56108a04d188/raw/a9f9e8076b837d541398e999dcbac2b2826a81f8/gdp-life-exp-2007.csv')
-fig = px.scatter(
-    df, 
-    x="gdp per capita", 
-    y="life expectancy",
-    size="population",
-    color="continent",
-    hover_name="country",
-    log_x=True,
-    size_max=60
-)
-app.layout = html.Div([
-    doc.Graph(
-        id="life-exp-vs-gdp",
-        figure=fig
-    )
-])
-
-if __name__ == "__main__":
-    app.run_server(debug=True)
-"""
-"""
-******DASH MARKDOWN******
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-
-external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-
-app = dash.Dash(__name__, external_stylesheets = external_stylesheets)
-
-markdown_text = '''
-### Dash and Markdown
-
-Dash apps can be written in Markdown.
-Dash uses the [CommonMark](http://commonmark.org)
-specification of Markdown.
-Check out their [60 Second Markdown Tutorial](http://commonmark.org/help/)
-if this is your first introduction to Markdown!
-'''
-
-app.layout = html.Div([
-    dcc.Markdown(children=markdown_text)
-])
-
-if __name__ == "__main__":
-    app.run_server(debug=True)
-"""
-"""
-******INPUTS IN DASH******
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
-
-external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
-app = dash.Dash(__name__, externaly_stylesheets=external_stylesheets)
-options_list = [
-    {"label": "New York City"},
-    {"label": u"Montréal", "value": "MTL"},
-    {"label": "San Francisco", "value": "SF"}
-]
-
-app.layout = html.Div([
-    html.Label("Dropdown"),
-    dcc.Dropdown(
-        options=options_list,
-        value="MTL"
-    ),
-    html.Label("Multi-Select Dropdown"),
-    dcc.Dropdown(
-        options=options_list,
-        value = ["MTL", "SF"],
-        multi = True
-    ),
-    html.Label("Radio Items"),
-    dcc.RadioItems(
-        options=options_list,
-        value = "MTL"
-    ),
-    html.Label("Checkboxes"),
-    dcc.Checklist(
-        options=options_list,
-        value = ["MTL", "SF"]
-    ),
-    html.Label("Text Input"),
-    dcc.Input(value="MTL", type="text"),
-    html.Label("Slider"),
-    dcc.Slider(
-        min=0,
-        max=9,
-        marks = {i: "Label {}".format(i) if i == 1 else str(i) for i in range(1,6)},
-        value = 5
-    ),
-], style = {"columnCount": 2})
-
-if __name__ == "__main__":
-    app.run_server(debug=True)
-"""
+from re import M
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -190,34 +8,46 @@ import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
+# OJO: Los paths cambiarán en un futuro. Se cambiarán una vez se haga la conexión con el backend.
+
 app = dash.Dash(__name__)
 
-data = pd.read_csv('../data/df_vars_modelamiento.csv')
+data = pd.read_csv('df_vars_modelamiento.csv')
 investments = pd.melt(data, id_vars=['anio_corte','municipio'], value_vars=['inversion_transformacion','inversion_conectividad', 'inversion'])
 municipalities = list(investments['municipio'].unique())
 
-## Lineplot:
-
-# fig = make_subplots(specs=[[{"secondary_y": True}]])
-# fig.add_trace(
-#     go.Scatter(x=data[data['municipio']=='medellin']["anio_corte"], y=data[data['municipio']=='medellin']["inversion_transformacion"], name="Inversión MinTC - Transformación en Medellín"),
-#     secondary_y=False,
-# )
-# fig.add_trace(
-#     go.Scatter(x=data[data['municipio']=='medellin']["anio_corte"], y=data[data['municipio']=='medellin']["inversion_conectividad"], name="Inversión MinTC - Conectividad en Medellín"),
-#     secondary_y=False,
-# )
-# fig.add_trace(
-#     go.Scatter(x=data[data['municipio']=='medellin']["anio_corte"], y=data[data['municipio']=='medellin']["inversion"], name="Inversión MinTC - Total en Medellín"),
-#     secondary_y=False,
-# )
-
-# fig.add_trace(
-#     go.Scatter(x=data[data['municipio']=='medellin']["anio_corte"], y=data[data['municipio']=='medellin']["componente_de_resultados"], name="Índice Calidad de Vida en Medellín"),
-#     secondary_y=True,
-# )
-# fig.show()
 init_map = open('../data/maps_html/map_foliumTotal2016.html','r').read()
+
+# ***** START OF STRIPPLOT *****
+x_options_stripplot = [
+    {"label": u"Año Corte", "value": "anio_corte"},
+    {"label": "Municipio", "value": "municipio"},
+    {"label": "Departamento", "value": "departamento"},
+    {"label": "Grupo Dotaciones", "value": "grupo_dotaciones"},
+    {"label": "Categoria de Ruralidad", "value": "categoria_de_ruralidad"}
+]
+y_options_stripplot = []
+for column_name in list(data.columns)[6:]:
+    cleaned_column_name = column_name.replace("_", " ")
+    label_dict = {"label": cleaned_column_name.title(),"value": column_name}
+    y_options.append(label_dict)
+
+stripplot = [
+    html.Label("X Axis"),
+    dcc.Dropdown(
+        id = "x_options_menu_stripplot",
+        options= x_options_stripplot,
+        value="anio_corte",
+    ),
+    dcc.Dropdown(
+        id = "y_options_menu_stripplot",
+        options = y_options_stripplot,
+        value="cobertura_media_neta"
+    ),
+    dcc.Graph(id="stripplot")]
+# ***** END OF STRIPPLOT *****
+
+
 
 app.layout = html.Div(children=[
     # Linechart:
@@ -230,6 +60,8 @@ app.layout = html.Div(children=[
         ),
         dcc.Graph(id="line-chart"),
     ]),
+    # Stripplot
+    html.Div(stripplot),
     # Maps:
     html.Div(children=[
         dcc.Dropdown(
@@ -309,6 +141,17 @@ def update_geo_graph(year, type_of_investment):
             return open('../data/maps_html/map_foliumTransformación2018.html','r').read()
         elif(year==2019):
             return open('../data/maps_html/map_foliumTransformación2019.html','r').read()
+
+# callback for stripplot
+@app.callback(
+    Output("stripplot", "figure"),
+    Input("x_options_menu_stripplot", "value"),
+    Input("y_options_menu_stripplot", "value"))
+def update_stripplot(x_option_name="anio_corte", y_option_name="cobertura_media_neta"):
+    fig = px.strip(df, x=x_option_name, y=y_option_name)
+    fig.update_xaxes(title=x_option_name)
+    fig.update_yaxes(title=y_option_name)
+    return fig
 
 
 if __name__ == '__main__':
