@@ -12,11 +12,11 @@ from plotly.subplots import make_subplots
 
 app = dash.Dash(__name__)
 
-data = pd.read_csv('../data/df_vars_modelamiento.csv')
+data = pd.read_csv('../../../data/df_vars_modelamiento.csv')
 investments = pd.melt(data, id_vars=['anio_corte','municipio_fixed_name'], value_vars=['inversion_transformacion','inversion_conectividad', 'inversion'])
 municipalities = list(investments['municipio_fixed_name'].unique())
 
-init_map = open('../data/maps_html/map_foliumTotal2016.html','r').read()
+init_map = open('../../../data/maps_html/map_foliumTotal2016.html','r').read()
 
 # ***** START OF STRIPPLOT *****
 x_options_stripplot = [
@@ -116,31 +116,31 @@ def update_line_chart(value):
 def update_geo_graph(year, type_of_investment):
     if type_of_investment == 'Inversión Total':
         if(year==2016):
-            return open('../data/maps_html/map_foliumTotal2016.html','r').read()
+            return open('../../../data/maps_html/map_foliumTotal2016.html','r').read()
         elif(year==2017):
-            return open('../data/maps_html/map_foliumTotal2017.html','r').read()
+            return open('../../../data/maps_html/map_foliumTotal2017.html','r').read()
         elif(year==2018):
-            return open('../data/maps_html/map_foliumTotal2018.html','r').read()
+            return open('../../../data/maps_html/map_foliumTotal2018.html','r').read()
         elif(year==2019):
-            return open('../data/maps_html/map_foliumTotal2019.html','r').read()
+            return open('../../../data/maps_html/map_foliumTotal2019.html','r').read()
     elif type_of_investment == 'Inversión en Conectividad':
         if(year==2016):
-            return open('../data/maps_html/map_foliumConectividad2016.html','r').read()
+            return open('../../../data/maps_html/map_foliumConectividad2016.html','r').read()
         elif(year==2017):
-            return open('../data/maps_html/map_foliumConectividad2017.html','r').read()
+            return open('../../../data/maps_html/map_foliumConectividad2017.html','r').read()
         elif(year==2018):
-            return open('../data/maps_html/map_foliumConectividad2018.html','r').read()
+            return open('../../../data/maps_html/map_foliumConectividad2018.html','r').read()
         elif(year==2019):
-            return open('../data/maps_html/map_foliumConectividad2019.html','r').read()
+            return open('../../../data/maps_html/map_foliumConectividad2019.html','r').read()
     elif type_of_investment == 'Inversión en Transformación':
         if(year==2016):
-            return open('../data/maps_html/map_foliumTransformación2016.html','r').read()
+            return open('../../../data/maps_html/map_foliumTransformación2016.html','r').read()
         elif(year==2017):
-            return open('../data/maps_html/map_foliumTransformación2017.html','r').read()
+            return open('../../../data/maps_html/map_foliumTransformación2017.html','r').read()
         elif(year==2018):
-            return open('../data/maps_html/map_foliumTransformación2018.html','r').read()
+            return open('../../../data/maps_html/map_foliumTransformación2018.html','r').read()
         elif(year==2019):
-            return open('../data/maps_html/map_foliumTransformación2019.html','r').read()
+            return open('../../../data/maps_html/map_foliumTransformación2019.html','r').read()
 
 # callback for stripplot
 @app.callback(
