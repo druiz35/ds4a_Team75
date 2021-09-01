@@ -14,10 +14,20 @@ import dash_graphs
 # OJO: Los paths cambiarán en un futuro. Se cambiarán una vez se haga la conexión con el backend.
 datasets_folder_path = "../../../datasets/"
 
+<<<<<<< HEAD
 #Data loading and processing
 data = pd.read_csv(datasets_folder_path + 'data_tables/df_vars_modelamiento.csv')
 investments = pd.melt(data, id_vars=['anio_corte','municipio'], value_vars=['inversion_transformacion','inversion_conectividad', 'inversion'])
 maps_path = "../../../datasets/maps_html"
+=======
+app = dash.Dash(__name__)
+
+data = pd.read_csv('../../../data/df_vars_modelamiento.csv')
+investments = pd.melt(data, id_vars=['anio_corte','municipio_fixed_name'], value_vars=['inversion_transformacion','inversion_conectividad', 'inversion'])
+municipalities = list(investments['municipio_fixed_name'].unique())
+
+init_map = open('../../../data/maps_html/map_foliumTotal2016.html','r').read()
+>>>>>>> ac31afd41df9a8d67d345d347c5b68ed0b12339e
 
 #Graph counter for dynamically adding graphs to the dashboard
 graph_counter_dict = {
@@ -65,9 +75,46 @@ app.layout = html.Div(
         #dbc.Button("+", id="open-body-scroll", className="add-graph-button", n_clicks=0),
         ]
     )
+<<<<<<< HEAD
 #Callbacks for initial graphs
 for graph in graphs:
     graph.update_graph(app)
+=======
+    return fig
+# Callback for maps:
+@app.callback(
+    Output("geo-graph", "srcDoc"), 
+    Input("year", "value"),
+    Input("type_of_investment", "value"))
+def update_geo_graph(year, type_of_investment):
+    if type_of_investment == 'Inversión Total':
+        if(year==2016):
+            return open('../../../data/maps_html/map_foliumTotal2016.html','r').read()
+        elif(year==2017):
+            return open('../../../data/maps_html/map_foliumTotal2017.html','r').read()
+        elif(year==2018):
+            return open('../../../data/maps_html/map_foliumTotal2018.html','r').read()
+        elif(year==2019):
+            return open('../../../data/maps_html/map_foliumTotal2019.html','r').read()
+    elif type_of_investment == 'Inversión en Conectividad':
+        if(year==2016):
+            return open('../../../data/maps_html/map_foliumConectividad2016.html','r').read()
+        elif(year==2017):
+            return open('../../../data/maps_html/map_foliumConectividad2017.html','r').read()
+        elif(year==2018):
+            return open('../../../data/maps_html/map_foliumConectividad2018.html','r').read()
+        elif(year==2019):
+            return open('../../../data/maps_html/map_foliumConectividad2019.html','r').read()
+    elif type_of_investment == 'Inversión en Transformación':
+        if(year==2016):
+            return open('../../../data/maps_html/map_foliumTransformación2016.html','r').read()
+        elif(year==2017):
+            return open('../../../data/maps_html/map_foliumTransformación2017.html','r').read()
+        elif(year==2018):
+            return open('../../../data/maps_html/map_foliumTransformación2018.html','r').read()
+        elif(year==2019):
+            return open('../../../data/maps_html/map_foliumTransformación2019.html','r').read()
+>>>>>>> ac31afd41df9a8d67d345d347c5b68ed0b12339e
 
 #Callback for modal
 """"
