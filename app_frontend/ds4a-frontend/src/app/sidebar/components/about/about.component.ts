@@ -6,7 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit {
-
+  panelExpandedHowDashboard = false;
+  panelExpandedWhatApp = false;
+  panelExpandedDevelopers = false;
+  hiddenHowDashboardButton = false;
+  hiddenWhatAppButton = false;
+  hiddenDevelopersButton = false;
   constructor() { }
 
   ngOnInit(): void {

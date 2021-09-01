@@ -1,0 +1,14 @@
+iframe {
+    position: absolute;
+    top: 0;
+    margin-left: 57px;
+    display: block;
+    float: right;
+}
+#content::-webkit-scrollbar {
+    display: none
+}
+#content {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

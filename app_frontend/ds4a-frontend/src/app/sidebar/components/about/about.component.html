@@ -1,72 +1,357 @@
 <div id="wrapper">
-    <div class="side_image">
-        <img src="https://via.placeholder.com/500x2130">
+    <div id="row">
+        <div id="button" class="how_dashboard" *ngIf="!hiddenHowDashboardButton" (click)="panelExpandedHowDashboard = !panelExpandedHowDashboard; hiddenHowDashboardButton = !hiddenHowDashboardButton; hiddenWhatAppButton = !hiddenWhatAppButton; hiddenDevelopersButton = !hiddenDevelopersButton">
+            <div id ="title_container">
+                <h1 id="button_title">¿Cómo usar esta aplicación?</h1>
+            </div>
+        </div>
+        <div id="info_container" *ngIf="panelExpandedHowDashboard">
+            <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedHowDashboard = !panelExpandedHowDashboard; hiddenHowDashboardButton = !hiddenHowDashboardButton; hiddenWhatAppButton = !hiddenWhatAppButton; hiddenDevelopersButton = !hiddenDevelopersButton">arrow_back_ios</mat-icon>
+            <h1>¿Cómo usar esta aplicación?</h1>
+            <div id="info-block">
+                <div id="info-images-left">
+                    <img src="../../../../assets/images/iconos_barra.png">
+                </div>
+                <div id="info-text-right">
+                    <h2 id="info-title" class="purple">Navegación</h2>
+                    <p id="info-paragraph" class="purple">
+                    ¡Es muy sencillo navegar por nuestra aplicación! <br>
+                    Solo selecciona el ícono asignado a la sección que quieres visitar. <br>
+                    </p>
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title" class="blue">El Dashboard: La joya de nuestra app</h2>
+                    <p id="info-paragraph" class="blue">
+                    El Dashboard está diseñado para visualizar los datos que se utilizaron para
+                    realizar las predicciones a futuro del estilo de vida de Colombia. 
+                    <br>
+                    Puedes interactuar con los siete tipos de gráficos que ofrecemos.
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="../../../../assets/images/dashboard_tutorial.gif">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title" class="purple">Usar un Linechart</h2>
+                    <p id="info-paragraph" class="purple">
+                    Para observar las diversas inversiones realizadas por el mintic y el índice de calidad de vida por departamento,
+                    solo seleccionas el departamento que quieres visualizar. <br>
+                    Si se pone el cursor encima de cada punto, se puede ver el valor preciso de las inversiones y el índice de calidad de vida. <br>
+                    Si mueves los valores a la izquierda y la derecha de la gráfica, puedes desplazar las lineas.
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="../../../../assets/images/linechart_tutorial.gif">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title" class="blue">Usar un Stripplot</h2>
+                    <p id="info-paragraph" class="blue">
+                    Selecciona el eje horizontal y vertical para visualizar distintos stripplots. <br>
+                    Ubica el cursor encima de los puntos para ver información acerca de ese punto.
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/stripplot_tutorial.gif">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title" class="purple">Usar un Geograph</h2>
+                    <p id="info-paragraph" class="purple">
+                    Selecciona el año y el tipo de inversión para ver en el mapa cómo se distribuyen las inversiones del mintic
+                    en Colombia.
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/geograph_tutorial.gif">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title" class="blue">Usar un Bargraph</h2>
+                    <p id="info-paragraph" class="blue">
+                    Selecciona el eje horizontal y el eje vertical para visualizar
+                    las distintas cantidades en un diagrama de barras.
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/bargraph_tutorial.gif">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title" class="purple">Usar un Treemap</h2>
+                    <p id="info-paragraph" class="purple">
+                    Selecciona el eje horizontal y el eje vertical para visualizar
+                    las distintas cantidades en un treemap. <br>
+                    Ubica el cursor encima de cada caja para ver información adicional.
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/treemap_tutorial.gif">
+                </div>
+            </div>      
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title" class="blue">Usar un Piechart</h2>
+                    <p id="info-paragraph" class="blue">
+                    Selecciona el eje horizontal y el eje vertical para visualizar
+                    las distintas cantidades en un diagrama de tortas.<br>
+                    Ubica el cursor encima de cada sección para ver el valor exacto en vez del porcentaje.
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/piechart_tutorial.gif">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title" class="purple">Usar un Distplot</h2>
+                    <p id="info-paragraph" class="purple">
+                    Selecciona el eje horizontal y el eje vertical para visualizar
+                    las distintas cantidades en un treemap. <br>
+                    Ubica el cursor encima de cada columna y del gráfico superior para ver información relacionada con
+                    cuartiles, medias y medianas de la distribución.
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/distplot_tutorial.gif">
+                </div>
+            </div>
+        </div>
+
+
+        <div id="button" class="what_app" *ngIf="!hiddenWhatAppButton" (click)="panelExpandedWhatApp = !panelExpandedWhatApp; hiddenHowDashboardButton = !hiddenHowDashboardButton; hiddenWhatAppButton = !hiddenWhatAppButton; hiddenDevelopersButton = !hiddenDevelopersButton">
+            <div id ="title_container">
+                <h1 id="button_title">¿Qué es esta aplicación?</h1>
+            </div>
+        </div>
+        <div id="info_container" *ngIf="panelExpandedWhatApp">
+            <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedWhatApp = !panelExpandedWhatApp; hiddenHowDashboardButton = !hiddenHowDashboardButton; hiddenWhatAppButton = !hiddenWhatAppButton; hiddenDevelopersButton = !hiddenDevelopersButton">arrow_back_ios</mat-icon>
+            <h1>¿Cómo usar esta aplicación?</h1>
+            <div id="info-block">
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+                <div id="info-text-right">
+                    <h2 id="info-title">Navegación</h2>
+                    <p id="info-paragraph">
+                    ¡Es muy sencillo navegar por nuestra aplicación! <br>
+                    Solo selecciona el ícono asignado a la sección que quieres visitar. <br>
+                    </p>
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">El Dashboard: La joya de nuestra app</h2>
+                    <p id="info-paragraph">
+                    El Dashboard está diseñado para visualizar los datos que se utilizaron para
+                    realizar las predicciones a futuro del estilo de vida de Colombia. 
+                    <br>
+                    Puedes agregar, eliminar e interactuar con los ocho tipos de gráficos que ofrecemos.
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Linechart</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Stripplot</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Geograph</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Bargraph</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Treemap</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>      
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Piechart</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Distplot</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+        </div>
+
+        <div id="button" class="developers" *ngIf="!hiddenDevelopersButton" (click)="panelExpandedDevelopers = !panelExpandedDevelopers; hiddenHowDashboardButton = !hiddenHowDashboardButton; hiddenWhatAppButton = !hiddenWhatAppButton; hiddenDevelopersButton = !hiddenDevelopersButton">
+            <div id ="title_container">
+                <h1 id="button_title">Los desarrolladores</h1>
+            </div>
+        </div>
+        <div id="info_container" *ngIf="panelExpandedDevelopers">
+            <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedDevelopers = !panelExpandedDevelopers; hiddenHowDashboardButton = !hiddenHowDashboardButton; hiddenWhatAppButton = !hiddenWhatAppButton; hiddenDevelopersButton = !hiddenDevelopersButton">arrow_back_ios</mat-icon>
+            <h1>¿Cómo usar esta aplicación?</h1>
+            <div id="info-block">
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+                <div id="info-text-right">
+                    <h2 id="info-title">Navegación</h2>
+                    <p id="info-paragraph">
+                    ¡Es muy sencillo navegar por nuestra aplicación! <br>
+                    Solo selecciona el ícono asignado a la sección que quieres visitar. <br>
+                    </p>
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">El Dashboard: La joya de nuestra app</h2>
+                    <p id="info-paragraph">
+                    El Dashboard está diseñado para visualizar los datos que se utilizaron para
+                    realizar las predicciones a futuro del estilo de vida de Colombia. 
+                    <br>
+                    Puedes agregar, eliminar e interactuar con los ocho tipos de gráficos que ofrecemos.
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Linechart</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Stripplot</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Geograph</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Bargraph</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Treemap</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>      
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Piechart</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+            <div id="info-block">
+                <div id="info-text-right">
+                    <h2 id="info-title">Usar un Distplot</h2>
+                    <p id="info-paragraph">
+                    
+                    </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/iconos_barra.png">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="content">
-        <h1 class="titulo_articulo">¿Qué es esta aplicación?</h1>
-            <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet augue convallis lacinia interdum. Praesent vel libero accumsan, ultrices augue quis, 
-                dapibus elit. Fusce aliquet vitae orci quis venenatis. Proin in lacus scelerisque, venenatis diam sit amet, bibendum turpis. 
-                Morbi pretium nisi non dolor lobortis maximus. Sed consequat ligula lacus, vitae venenatis elit tincidunt sit amet. Duis ornare fringilla dui eget tristique. 
-                Quisque vulputate, massa a aliquam molestie, orci nisl consequat enim, quis feugiat mauris lorem in augue. Ut id congue dolor. Praesent lacinia malesuada tempor. 
-                Vestibulum sit amet convallis libero, a volutpat elit. Sed in interdum nulla. Nulla quam tortor, dignissim non nunc ac, cursus varius risus. 
-                Praesent volutpat turpis a nunc mattis, et dignissim lectus aliquet. In imperdiet interdum erat, a blandit urna imperdiet eu. In eget sapien non risus ornare iaculis.
-            </p>
-        <h1 class="titulo_articulo">¿Cómo usar esta aplicación?</h1>
-        <h2 class="subtitulo_articulo">Navegación</h2>
-            <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet augue convallis lacinia interdum. Praesent vel libero accumsan, ultrices augue quis, 
-                dapibus elit. Fusce aliquet vitae orci quis venenatis. Proin in lacus scelerisque, venenatis diam sit amet, bibendum turpis. 
-                Morbi pretium nisi non dolor lobortis maximus. Sed consequat ligula lacus, vitae venenatis elit tincidunt sit amet. Duis ornare fringilla dui eget tristique. 
-                Quisque vulputate, massa a aliquam molestie, orci nisl consequat enim, quis feugiat mauris lorem in augue. Ut id congue dolor. Praesent lacinia malesuada tempor. 
-                Vestibulum sit amet convallis libero, a volutpat elit. Sed in interdum nulla. Nulla quam tortor, dignissim non nunc ac, cursus varius risus. 
-                Praesent volutpat turpis a nunc mattis, et dignissim lectus aliquet. In imperdiet interdum erat, a blandit urna imperdiet eu. In eget sapien non risus ornare iaculis.
-            </p>
-        <h2 class="subtitulo_articulo">Página Acerca De</h2>
-            <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet augue convallis lacinia interdum. Praesent vel libero accumsan, ultrices augue quis, 
-                dapibus elit. Fusce aliquet vitae orci quis venenatis. Proin in lacus scelerisque, venenatis diam sit amet, bibendum turpis. 
-                Morbi pretium nisi non dolor lobortis maximus. Sed consequat ligula lacus, vitae venenatis elit tincidunt sit amet. Duis ornare fringilla dui eget tristique. 
-                Quisque vulputate, massa a aliquam molestie, orci nisl consequat enim, quis feugiat mauris lorem in augue. Ut id congue dolor. Praesent lacinia malesuada tempor. 
-                Vestibulum sit amet convallis libero, a volutpat elit. Sed in interdum nulla. Nulla quam tortor, dignissim non nunc ac, cursus varius risus. 
-                Praesent volutpat turpis a nunc mattis, et dignissim lectus aliquet. In imperdiet interdum erat, a blandit urna imperdiet eu. In eget sapien non risus ornare iaculis.
-            </p>
-        <h2 class="subtitulo_articulo">Data Dashboard</h2>
-            <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet augue convallis lacinia interdum. Praesent vel libero accumsan, ultrices augue quis, 
-                dapibus elit. Fusce aliquet vitae orci quis venenatis. Proin in lacus scelerisque, venenatis diam sit amet, bibendum turpis. 
-                Morbi pretium nisi non dolor lobortis maximus. Sed consequat ligula lacus, vitae venenatis elit tincidunt sit amet. Duis ornare fringilla dui eget tristique. 
-                Quisque vulputate, massa a aliquam molestie, orci nisl consequat enim, quis feugiat mauris lorem in augue. Ut id congue dolor. Praesent lacinia malesuada tempor. 
-                Vestibulum sit amet convallis libero, a volutpat elit. Sed in interdum nulla. Nulla quam tortor, dignissim non nunc ac, cursus varius risus. 
-                Praesent volutpat turpis a nunc mattis, et dignissim lectus aliquet. In imperdiet interdum erat, a blandit urna imperdiet eu. In eget sapien non risus ornare iaculis.
-            </p>
-        <h2 class="subtitulo_articulo">Página Descripción de modelos</h2>
-            <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet augue convallis lacinia interdum. Praesent vel libero accumsan, ultrices augue quis, 
-                dapibus elit. Fusce aliquet vitae orci quis venenatis. Proin in lacus scelerisque, venenatis diam sit amet, bibendum turpis. 
-                Morbi pretium nisi non dolor lobortis maximus. Sed consequat ligula lacus, vitae venenatis elit tincidunt sit amet. Duis ornare fringilla dui eget tristique. 
-                Quisque vulputate, massa a aliquam molestie, orci nisl consequat enim, quis feugiat mauris lorem in augue. Ut id congue dolor. Praesent lacinia malesuada tempor. 
-                Vestibulum sit amet convallis libero, a volutpat elit. Sed in interdum nulla. Nulla quam tortor, dignissim non nunc ac, cursus varius risus. 
-                Praesent volutpat turpis a nunc mattis, et dignissim lectus aliquet. In imperdiet interdum erat, a blandit urna imperdiet eu. In eget sapien non risus ornare iaculis.
-            </p>
-        <h2 class="subtitulo_articulo">Página Interpretación y Recomendaciones del Equipo</h2>
-            <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet augue convallis lacinia interdum. Praesent vel libero accumsan, ultrices augue quis, 
-                dapibus elit. Fusce aliquet vitae orci quis venenatis. Proin in lacus scelerisque, venenatis diam sit amet, bibendum turpis. 
-                Morbi pretium nisi non dolor lobortis maximus. Sed consequat ligula lacus, vitae venenatis elit tincidunt sit amet. Duis ornare fringilla dui eget tristique. 
-                Quisque vulputate, massa a aliquam molestie, orci nisl consequat enim, quis feugiat mauris lorem in augue. Ut id congue dolor. Praesent lacinia malesuada tempor. 
-                Vestibulum sit amet convallis libero, a volutpat elit. Sed in interdum nulla. Nulla quam tortor, dignissim non nunc ac, cursus varius risus. 
-                Praesent volutpat turpis a nunc mattis, et dignissim lectus aliquet. In imperdiet interdum erat, a blandit urna imperdiet eu. In eget sapien non risus ornare iaculis.
-            </p>
-        <h1 class="titulo_articulo">Acerca de MinTic</h1>
-            <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet augue convallis lacinia interdum. Praesent vel libero accumsan, ultrices augue quis, 
-                dapibus elit. Fusce aliquet vitae orci quis venenatis. Proin in lacus scelerisque, venenatis diam sit amet, bibendum turpis. 
-                Morbi pretium nisi non dolor lobortis maximus. Sed consequat ligula lacus, vitae venenatis elit tincidunt sit amet. Duis ornare fringilla dui eget tristique. 
-                Quisque vulputate, massa a aliquam molestie, orci nisl consequat enim, quis feugiat mauris lorem in augue. Ut id congue dolor. Praesent lacinia malesuada tempor. 
-                Vestibulum sit amet convallis libero, a volutpat elit. Sed in interdum nulla. Nulla quam tortor, dignissim non nunc ac, cursus varius risus. 
-                Praesent volutpat turpis a nunc mattis, et dignissim lectus aliquet. In imperdiet interdum erat, a blandit urna imperdiet eu. In eget sapien non risus ornare iaculis.
-            </p>
-        <h1 class="titulo_articulo">Acerca de Correlation One</h1>
-            <p class="parrafo">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur imperdiet augue convallis lacinia interdum. Praesent vel libero accumsan, ultrices augue quis, 
-                dapibus elit. Fusce aliquet vitae orci quis venenatis. Proin in lacus scelerisque, venenatis diam sit amet, bibendum turpis. 
-                Morbi pretium nisi non dolor lobortis maximus. Sed consequat ligula lacus, vitae venenatis elit tincidunt sit amet. Duis ornare fringilla dui eget tristique. 
-                Quisque vulputate, massa a aliquam molestie, orci nisl consequat enim, quis feugiat mauris lorem in augue. Ut id congue dolor. Praesent lacinia malesuada tempor. 
-                Vestibulum sit amet convallis libero, a volutpat elit. Sed in interdum nulla. Nulla quam tortor, dignissim non nunc ac, cursus varius risus. 
-                Praesent volutpat turpis a nunc mattis, et dignissim lectus aliquet. In imperdiet interdum erat, a blandit urna imperdiet eu. In eget sapien non risus ornare iaculis.
-            </p>
-    </div>
-<div>
+
+</div>

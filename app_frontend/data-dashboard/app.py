@@ -1,158 +1,85 @@
+
 from re import M
 import dash
+import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 import plotly.express as px
-from dash.dependencies import Input, Output
+from dash.dependencies import Input, Output, State
 import pandas as pd
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
+import dash_graphs
 
 # OJO: Los paths cambiarán en un futuro. Se cambiarán una vez se haga la conexión con el backend.
+datasets_folder_path = "../../../datasets/"
 
-app = dash.Dash(__name__)
+#Data loading and processing
+data = pd.read_csv(datasets_folder_path + 'data_tables/df_vars_modelamiento.csv')
+investments = pd.melt(data, id_vars=['anio_corte','municipio'], value_vars=['inversion_transformacion','inversion_conectividad', 'inversion'])
+maps_path = "../../../datasets/maps_html"
 
-data = pd.read_csv('../data/df_vars_modelamiento.csv')
-investments = pd.melt(data, id_vars=['anio_corte','municipio_fixed_name'], value_vars=['inversion_transformacion','inversion_conectividad', 'inversion'])
-municipalities = list(investments['municipio_fixed_name'].unique())
+#Graph counter for dynamically adding graphs to the dashboard
+graph_counter_dict = {
+    "stripplot": 1,
+    "geograph": 1,
+    "linechart": 1,
+    "bargraph": 1,
+    "treemap": 1,
+    "piegraph": 1,
+    "distplot": 1
+}
 
-init_map = open('../data/maps_html/map_foliumTotal2016.html','r').read()
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+graphs = [
+    dash_graphs.Linechart(0, data), 
+    dash_graphs.Stripplot(0, data), 
+    dash_graphs.Geograph(0, maps_path),
+    dash_graphs.Bargraph(0, data),
+    dash_graphs.Treemap(0, data),
+    dash_graphs.Piechart(0, data),
+    dash_graphs.Distplot(0, data)]
 
-# ***** START OF STRIPPLOT *****
-x_options_stripplot = [
-    {"label": "Año Corte", "value": "anio_corte"},
-    {"label": "Municipio", "value": "municipio_fixed_name"},
-    {"label": "Departamento", "value": "departamento_fixed_name"},
-    {"label": "Grupo Dotaciones", "value": "grupo_dotaciones"},
-    {"label": "Categoria de Ruralidad", "value": "categoria_de_ruralidad"}
-]
-y_options_stripplot = []
-for column_name in list(data.columns)[6:]:
-    cleaned_column_name = column_name.replace("_", " ")
-    label_dict = {"label": cleaned_column_name.title(),"value": column_name}
-    y_options_stripplot.append(label_dict)
-
-stripplot = [
-    html.Label("X Axis"),
-    dcc.Dropdown(
-        id = "x_options_menu_stripplot",
-        options= x_options_stripplot,
-        value="anio_corte",
-    ),
-    dcc.Dropdown(
-        id = "y_options_menu_stripplot",
-        options = y_options_stripplot,
-        value="cobertura_neta_en_educacion_media"
-    ),
-    dcc.Graph(id="stripplot")]
-# ***** END OF STRIPPLOT *****
+#children_graphs_list = [html.Div(graph.create_graph()) for graph in graphs]    
+children_left_graphs_list, children_right_graphs_list = [], []
+div_flag = True
+for graph in graphs:
+    if div_flag:
+        item = html.Div(graph.create_graph(), className="graph")
+        children_left_graphs_list.append(item)
+    elif not div_flag:
+        item = html.Div(graph.create_graph(), className="graph")
+        children_right_graphs_list.append(item)
+    div_flag = not div_flag
 
 
+modal_body_list = [dash_graphs.create_modal_button(i) for i in ["linechart", "stripplot", "geograph", "bargraph", "treemap", "piechart", "distplot"]]
+modal_list = [dbc.ModalHeader("Añadir Nuevo Gráfico"), dbc.ModalBody(modal_body_list), dbc.ModalFooter(dash_graphs.create_modal_button("close-modal"))]
 
-app.layout = html.Div(children=[
-    # Linechart:
-    html.Div([
-        dcc.Dropdown(
-            id="fig_dropdown",
-            options=[{"label": x, "value": x} for x in municipalities],
-            placeholder='Select a municipality',
-            searchable=True
-        ),
-        dcc.Graph(id="line-chart"),
-    ]),
-    # Stripplot
-    html.Div(stripplot),
-    # Maps:
-    html.Div(children=[
-        dcc.Dropdown(
-            id="year",
-            options=[{"label": x, "value": x} for x in [2016,2017,2018,2019]],
-            placeholder="Select a year",
-        ),
-        dcc.Dropdown(
-            id="type_of_investment",
-            options=[{"label": x, "value": x} for x in ['Inversión Total', 'Inversión en Conectividad', 'Inversión en Transformación']],
-            placeholder="Select a type of investment",
-        ),
-        html.Iframe(
-                   id='geo-graph',
-                   srcDoc=init_map,
-                   width='100%',
-                   height='600'),
-    ])
-])
+app.layout = html.Div(
+    id="content",
+    children=[
+        dbc.Modal(modal_list, id="modal-body-scroll", scrollable=True, is_open=False),
+        html.Div(id="left-graphs", children=children_left_graphs_list),
+        html.Div(id="right-graphs", children=children_right_graphs_list),
+        #dbc.Button("+", id="open-body-scroll", className="add-graph-button", n_clicks=0),
+        ]
+    )
+#Callbacks for initial graphs
+for graph in graphs:
+    graph.update_graph(app)
 
-# Callback for lineplot:
+#Callback for modal
+""""
 @app.callback(
-    Output("line-chart", "figure"), 
-    [Input("fig_dropdown", "value")])
-def update_line_chart(value):
-    # fig = px.line(investments[investments['municipio']==value], 
-    #     x="anio_corte", y="value", color='variable')
-    fig = make_subplots(specs=[[{"secondary_y": True}]])
-    fig.add_trace(
-        go.Scatter(x=data[data['municipio_fixed_name']==value]["anio_corte"], y=data[data['municipio_fixed_name']==value]["inversion_transformacion"], name="Inversión MinTC - Transformación"),
-        secondary_y=False,
-    )
-    fig.add_trace(
-        go.Scatter(x=data[data['municipio_fixed_name']==value]["anio_corte"], y=data[data['municipio_fixed_name']==value]["inversion_conectividad"], name="Inversión MinTC - Conectividad"),
-        secondary_y=False,
-    )
-    fig.add_trace(
-        go.Scatter(x=data[data['municipio_fixed_name']==value]["anio_corte"], y=data[data['municipio_fixed_name']==value]["inversion"], name="Inversión MinTC - Total"),
-        secondary_y=False,
-    )
-
-    fig.add_trace(
-        go.Scatter(x=data[data['municipio_fixed_name']==value]["anio_corte"], y=data[data['municipio_fixed_name']==value]["componente_de_resultados"], name="Índice Calidad de Vida"),
-        secondary_y=True,
-    )
-    return fig
-# Callback for maps:
-@app.callback(
-    Output("geo-graph", "srcDoc"), 
-    Input("year", "value"),
-    Input("type_of_investment", "value"))
-def update_geo_graph(year, type_of_investment):
-    if type_of_investment == 'Inversión Total':
-        if(year==2016):
-            return open('../data/maps_html/map_foliumTotal2016.html','r').read()
-        elif(year==2017):
-            return open('../data/maps_html/map_foliumTotal2017.html','r').read()
-        elif(year==2018):
-            return open('../data/maps_html/map_foliumTotal2018.html','r').read()
-        elif(year==2019):
-            return open('../data/maps_html/map_foliumTotal2019.html','r').read()
-    elif type_of_investment == 'Inversión en Conectividad':
-        if(year==2016):
-            return open('../data/maps_html/map_foliumConectividad2016.html','r').read()
-        elif(year==2017):
-            return open('../data/maps_html/map_foliumConectividad2017.html','r').read()
-        elif(year==2018):
-            return open('../data/maps_html/map_foliumConectividad2018.html','r').read()
-        elif(year==2019):
-            return open('../data/maps_html/map_foliumConectividad2019.html','r').read()
-    elif type_of_investment == 'Inversión en Transformación':
-        if(year==2016):
-            return open('../data/maps_html/map_foliumTransformación2016.html','r').read()
-        elif(year==2017):
-            return open('../data/maps_html/map_foliumTransformación2017.html','r').read()
-        elif(year==2018):
-            return open('../data/maps_html/map_foliumTransformación2018.html','r').read()
-        elif(year==2019):
-            return open('../data/maps_html/map_foliumTransformación2019.html','r').read()
-
-# callback for stripplot
-@app.callback(
-    Output("stripplot", "figure"),
-    Input("x_options_menu_stripplot", "value"),
-    Input("y_options_menu_stripplot", "value"))
-def update_stripplot(x_option_name="anio_corte", y_option_name="cobertura_neta_en_educacion_media"):
-    fig = px.strip(data, x=x_option_name, y=y_option_name)
-    fig.update_xaxes(title=x_option_name)
-    fig.update_yaxes(title=y_option_name)
-    return fig
-
+    Output("modal-body-scroll", "is_open"),
+    [Input("open-body-scroll", "n_clicks"), Input("close-body-scroll", "n_clicks")],
+    [State("modal-body-scroll", "is_open")])
+def toggle_modal(n1, n2, is_open):
+    if n1 or n2:
+        return not is_open
+    return is_open
+"""
 
 if __name__ == '__main__':
     app.run_server(debug=True)

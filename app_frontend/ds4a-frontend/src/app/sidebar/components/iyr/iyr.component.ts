@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./iyr.component.scss']
 })
 export class IyrComponent implements OnInit {
-
+  panelExpandedEda = false;
+  panelExpandedCyr = false;
+  hiddenEda = false;
+  hiddenCyr = false;
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
