@@ -2,12 +2,12 @@
     <div id="row">
         <div id="button" class="eda" *ngIf="!hiddenEda" (click)="panelExpandedEda = !panelExpandedEda; hiddenEda = !hiddenEda; hiddenCyr = !hiddenCyr;">
             <div id ="title_container">
-                <h1 id="button_title">Modelo 1</h1>
+                <h1 id="button_title">Análisis Exploratorio de los Datos</h1>
             </div>
         </div>
         <div id="info_container" *ngIf="panelExpandedEda">
             <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedEda = !panelExpandedEda; hiddenEda = !hiddenEda; hiddenCyr = !hiddenCyr;">arrow_back_ios</mat-icon>
-            <h1>¿Cómo usar esta aplicación?</h1>
+            <h1>Análisis Exploratorio de los Datos</h1>
             <div id="info-block">
                 <div id="info-images-left">
                     <img src="(../../../../assets/images/iconos_barra.png">
@@ -115,7 +115,7 @@
 
         <div id="button" class="cyr" *ngIf="!hiddenCyr" (click)="panelExpandedCyr = !panelExpandedCyr; hiddenEda = !hiddenEda; hiddenCyr = !hiddenCyr;">
             <div id ="title_container">
-                <h1 id="button_title">Modelo 2</h1>
+                <h1 id="button_title">Conclusiones y Recomendaciones</h1>
             </div>
         </div>
         <div id="info_container" *ngIf="panelExpandedCyr">
@@ -226,5 +226,4 @@
             </div>
         </div>
     </div>
-
-</div>
+</div> 

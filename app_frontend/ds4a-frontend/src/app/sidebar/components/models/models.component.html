@@ -1,230 +1,92 @@
 <div id="wrapper">
     <div id="row">
-        <div id="button" class="model_1" *ngIf="!hiddenModel1" (click)="panelExpandedModel1 = !panelExpandedModel1; hiddenModel1 = !hiddenModel1; hiddenModel2 = !hiddenModel2;">
+        <div id="button" class="model_1" *ngIf="!hiddenModel1" (click)="panelExpandedModel1 = !panelExpandedModel1; hiddenModel1 = !hiddenModel1; hiddenModel2 = !hiddenModel2; hiddenModel3 = !hiddenModel3;">
             <div id ="title_container">
-                <h1 id="button_title">Modelo 1</h1>
+                <h1 id="button_title">XGB Boost</h1>
             </div>
         </div>
         <div id="info_container" *ngIf="panelExpandedModel1">
-            <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedModel1 = !panelExpandedModel1; hiddenModel1 = !hiddenModel1; hiddenModel2 = !hiddenModel2;">arrow_back_ios</mat-icon>
-            <h1>¿Cómo usar esta aplicación?</h1>
+            <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedModel1 = !panelExpandedModel1; hiddenModel1 = !hiddenModel1; hiddenModel2 = !hiddenModel2; hiddenModel3 = !hiddenModel3;">arrow_back_ios</mat-icon>
+            <h1>XGB Boost</h1>
             <div id="info-block">
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="(../../../../assets/images/xgb_graph.png">
                 </div>
                 <div id="info-text-right">
-                    <h2 id="info-title" class="purple">Navegación</h2>
-                    <p id="info-paragraph" class="purple">
-                    ¡Es muy sencillo navegar por nuestra aplicación! <br>
-                    Solo selecciona el ícono asignado a la sección que quieres visitar. <br>
+                    <p id="info-paragraph" class="white">
+                    XGBoost es una biblioteca optimizada de aumento de gradiente 
+                    distribuida diseñada para ser altamente eficiente, flexible y 
+                    portátil. Implementa algoritmos de aprendizaje automático bajo 
+                    el marco Gradient Boosting. <br>
+                     XGBoost ofrece muchas herramientas 
+                    para Machine Learning, una de ellas es el modelo de Regresión, 
+                    implementado en este cuaderno, que nos permite generar un modelo 
+                    de predicción, y da luz sobre cuáles podrían ser las principales 
+                    variables y su importancia para hacer una predicción sobre la variable. 
+                    elegimos como representación de la Calidad de Vida. <br>
+                    La forma en que 
+                    funciona el modelo es generando un árbol de decisión a partir de la 
+                    etapa del tren y el uso de este árbol para realizar una predicción con 
+                    los datos de prueba o cualquier dato que tenga las características 
+                    involucradas.
                     </p>
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title" class="blue">El Dashboard: La joya de nuestra app</h2>
-                    <p id="info-paragraph" class="blue">
-                    El Dashboard está diseñado para visualizar los datos que se utilizaron para
-                    realizar las predicciones a futuro del estilo de vida de Colombia. 
-                    <br>
-                    Puedes agregar, eliminar e interactuar con los ocho tipos de gráficos que ofrecemos.
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Linechart</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Stripplot</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Geograph</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Bargraph</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Treemap</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>      
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Piechart</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Distplot</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
                 </div>
             </div>
         </div>
 
-        <div id="button" class="model_2" *ngIf="!hiddenModel2" (click)="panelExpandedModel2 = !panelExpandedModel2; hiddenModel1 = !hiddenModel1; hiddenModel2 = !hiddenModel2;">
+        <div id="button" class="model_2" *ngIf="!hiddenModel2" (click)="panelExpandedModel2 = !panelExpandedModel2; hiddenModel1 = !hiddenModel1; hiddenModel2 = !hiddenModel2; hiddenModel3 = !hiddenModel3;">
             <div id ="title_container">
-                <h1 id="button_title">Modelo 2</h1>
+                <h1 id="button_title">Random Forest</h1>
             </div>
         </div>
         <div id="info_container" *ngIf="panelExpandedModel2">
-            <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedModel2 = !panelExpandedModel2; hiddenModel1 = !hiddenModel1; hiddenModel2 = !hiddenModel2;">arrow_back_ios</mat-icon>
-            <h1>¿Cómo usar esta aplicación?</h1>
+            <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedModel2 = !panelExpandedModel2; hiddenModel1 = !hiddenModel1; hiddenModel2 = !hiddenModel2; hiddenModel3 = !hiddenModel3;">arrow_back_ios</mat-icon>
+            <h1>Random Forest</h1>
             <div id="info-block">
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="(../../../../assets/images/randomforest_graph.png">
                 </div>
                 <div id="info-text-right">
-                    <h2 id="info-title">Navegación</h2>
                     <p id="info-paragraph">
-                    ¡Es muy sencillo navegar por nuestra aplicación! <br>
-                    Solo selecciona el ícono asignado a la sección que quieres visitar. <br>
-                    </p>
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">El Dashboard: La joya de nuestra app</h2>
-                    <p id="info-paragraph">
-                    El Dashboard está diseñado para visualizar los datos que se utilizaron para
-                    realizar las predicciones a futuro del estilo de vida de Colombia. 
-                    <br>
-                    Puedes agregar, eliminar e interactuar con los ocho tipos de gráficos que ofrecemos.
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Linechart</h2>
-                    <p class="info-paragraph">
                     
                     </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Stripplot</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Geograph</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Bargraph</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Treemap</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>      
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Piechart</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Distplot</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
                 </div>
             </div>
         </div>
-    </div>
+    
+        <div id="button" class="model_3" *ngIf="!hiddenModel1" (click)="panelExpandedModel3 = !panelExpandedModel3; hiddenModel1 = !hiddenModel1; hiddenModel2 = !hiddenModel2; hiddenModel3 = !hiddenModel3;">
+            <div id ="title_container">
+                <h1 id="button_title">Regresión Lineal</h1>
+            </div>
+        </div>
+        <div id="info_container" *ngIf="panelExpandedModel3">
+            <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedModel3 = !panelExpandedModel3; hiddenModel1 = !hiddenModel1; hiddenModel2 = !hiddenModel2; hiddenModel3 = !hiddenModel3;">arrow_back_ios</mat-icon>
+            <h1>OLS Model</h1>
+                <div id="info-block">
+                    <div id="info-images-left">
+                        <img src="(../../../../assets/images/ols_graph_5.png">
+                    </div>
+                    <div id="info-text-right">
+                        <p id="info-paragraph" class="white">
+                        XGBoost es una biblioteca optimizada de aumento de gradiente 
+                        distribuida diseñada para ser altamente eficiente, flexible y 
+                        portátil. Implementa algoritmos de aprendizaje automático bajo 
+                        el marco Gradient Boosting. <br>
+                        XGBoost ofrece muchas herramientas 
+                        para Machine Learning, una de ellas es el modelo de Regresión, 
+                        implementado en este cuaderno, que nos permite generar un modelo 
+                        de predicción, y da luz sobre cuáles podrían ser las principales 
+                        variables y su importancia para hacer una predicción sobre la variable. 
+                        elegimos como representación de la Calidad de Vida. <br>
+                        La forma en que 
+                        funciona el modelo es generando un árbol de decisión a partir de la 
+                        etapa del tren y el uso de este árbol para realizar una predicción con 
+                        los datos de prueba o cualquier dato que tenga las características 
+                        involucradas.
+                        </p>
+                    </div>
+                </div>
+        </div>
 
+    </div>
 </div>

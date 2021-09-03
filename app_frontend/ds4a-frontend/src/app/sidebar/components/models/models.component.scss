@@ -34,10 +34,15 @@
     background-size: cover;
 }
 
+.model_3 {
+    background-image: url("../../../../assets/images/ai1.jpg");
+    background-size: cover;
+}
+
 #button_title {
     position: relative;
     color: white;
-    font-size: 40px;
+    font-size: 36px;
     text-align: center;
     font-family: "Alegreya Sans", sans-serif;
     font-weight: bold;
@@ -52,8 +57,8 @@
 }
 
 #info_container {
-    //background: rgba(130, 62, 240, 0.8);
-    background: rgba(38,38,38,1);
+    background: rgba(130, 62, 240, 0.8);
+    //background: rgba(38,38,38,1);
     border-radius: 10px;
     height: 700px;
     overflow: auto;
@@ -78,7 +83,7 @@
     font-family: "Alegreya Sans", sans-serif;
     text-align: justify;
     float: right;
-    width: 58%;
+    width: 100%;
 }
 
 h1{
@@ -96,6 +101,10 @@ h1{
 
 .blue {
     color: rgba(41, 179, 233, 1);
+}
+
+.white {
+    color: white;
 }
 
 #info-title {

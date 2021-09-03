@@ -132,110 +132,22 @@
                 <h1 id="button_title">¿Qué es esta aplicación?</h1>
             </div>
         </div>
-        <div id="info_container" *ngIf="panelExpandedWhatApp">
+        <div id="info_container" *ngIf="panelExpandedWhatApp"> 
             <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedWhatApp = !panelExpandedWhatApp; hiddenHowDashboardButton = !hiddenHowDashboardButton; hiddenWhatAppButton = !hiddenWhatAppButton; hiddenDevelopersButton = !hiddenDevelopersButton">arrow_back_ios</mat-icon>
-            <h1>¿Cómo usar esta aplicación?</h1>
+            <h1>¿Qué es esta aplicación?</h1>
             <div id="info-block">
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="../../../../assets/images/dashboard_tutorial.gif">
                 </div>
                 <div id="info-text-right">
-                    <h2 id="info-title">Navegación</h2>
-                    <p id="info-paragraph">
-                    ¡Es muy sencillo navegar por nuestra aplicación! <br>
-                    Solo selecciona el ícono asignado a la sección que quieres visitar. <br>
+                    <h2 id="info-title" class="purple">Intentando predecir la calidad de vida para el futuro</h2>
+                    <p id="info-paragraph" class="purple">
+                    Es una aplicación que tiene como fin último mostrar los resultados de las predicciones de nuestros modelos de la calidad de vida
+                    para el futuro según las inversiones que ha hecho el MinTic. <br>
+                    En la sección de Descripción de Modelos de la app se puede encontrar una descripción técnica de los modelos utilizados. <br>
+                    Por último, en la sección de interpretación y recomendaciones del equipo se encuentran nuestras conclusiones e interpretaciones
+                    hechas por el equipo de desarolladores a partir del análisis de datos.
                     </p>
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">El Dashboard: La joya de nuestra app</h2>
-                    <p id="info-paragraph">
-                    El Dashboard está diseñado para visualizar los datos que se utilizaron para
-                    realizar las predicciones a futuro del estilo de vida de Colombia. 
-                    <br>
-                    Puedes agregar, eliminar e interactuar con los ocho tipos de gráficos que ofrecemos.
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Linechart</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Stripplot</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Geograph</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Bargraph</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Treemap</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>      
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Piechart</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Distplot</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
                 </div>
             </div>
         </div>
@@ -247,110 +159,91 @@
         </div>
         <div id="info_container" *ngIf="panelExpandedDevelopers">
             <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedDevelopers = !panelExpandedDevelopers; hiddenHowDashboardButton = !hiddenHowDashboardButton; hiddenWhatAppButton = !hiddenWhatAppButton; hiddenDevelopersButton = !hiddenDevelopersButton">arrow_back_ios</mat-icon>
-            <h1>¿Cómo usar esta aplicación?</h1>
+            <h1>Los Desarrolladores</h1>
             <div id="info-block">
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="../../../../assets/images/jose_dario.jpg">
                 </div>
                 <div id="info-text-right">
-                    <h2 id="info-title">Navegación</h2>
-                    <p id="info-paragraph">
-                    ¡Es muy sencillo navegar por nuestra aplicación! <br>
-                    Solo selecciona el ícono asignado a la sección que quieres visitar. <br>
+                    <h2 id="info-title" class="purple">José Darío Quinto Muñoz</h2>
+                    <p id="info-paragraph" class="purple">
+                    Ingeniero Físico<br>
+                    https://www.linkedin.com/in/josedarioquinto <br>
                     </p>
                 </div>
             </div>
             <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">El Dashboard: La joya de nuestra app</h2>
-                    <p id="info-paragraph">
-                    El Dashboard está diseñado para visualizar los datos que se utilizaron para
-                    realizar las predicciones a futuro del estilo de vida de Colombia. 
-                    <br>
-                    Puedes agregar, eliminar e interactuar con los ocho tipos de gráficos que ofrecemos.
-                    </p>
-                </div>
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="../../../../assets/images/jose_sebastian.jpg">
+                </div>
+                <div id="info-text-right">
+                    <h2 id="info-title" class="purple">Jose Sebastian Estepa Andrade</h2>
+                    <p id="info-paragraph" class="purple">
+                    Economista <br>
+                    http://www.linkedin.com/in/jose-estepa <br>
+                    </p>
                 </div>
             </div>
             <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Linechart</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="../../../../assets/images/sebastian_guzman.jpg">
+                </div>
+                <div id="info-text-right">
+                    <h2 id="info-title" class="purple">Sebastián Guzmán Rodríguez</h2>
+                    <p id="info-paragraph" class="purple">
+                    Biólogo <br>
+                    https://www.linkedin.com/in/sebastian-guzman-rodriguez/ <br>
+                    </p>
                 </div>
             </div>
             <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Stripplot</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="../../../../assets/images/juan_carlos.jpg">
+                </div>
+                <div id="info-text-right">
+                    <h2 id="info-title" class="purple">Juan Carlos García Ojeda</h2>
+                    <p id="info-paragraph" class="purple">
+                    Ingeniero de Sistemas <br>
+                    https://www.linkedin.com/in/juan-carlos-garc%C3%ADa-ojeda-b3564712/ <br>
+                    </p>
                 </div>
             </div>
             <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Geograph</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="../../../../assets/images/gabriel.jpg">
+                </div>
+                <div id="info-text-right">
+                    <h2 id="info-title" class="purple">Gabriel Ardila de la Peña</h2>
+                    <p id="info-paragraph" class="purple">
+                    Ingeniero Electrónico <br>
+                    http://linkedin.com/in/gabriel-ardila-de-la-pe%C3%B1a-6a696838 <br>
+                    </p>
                 </div>
             </div>
             <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Bargraph</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="../../../../assets/images/juan_sebastian.jpg">
+                </div>
+                <div id="info-text-right">
+                    <h2 id="info-title" class="purple">Juan Sebastian Guerrero</h2>
+                    <p id="info-paragraph" class="purple">
+                    Cientifico de Datos <br>
+                    https://www.linkedin.com/in/juan-sebastian-guerrero-ba2414195 <br>
+                    </p>
                 </div>
             </div>
             <div id="info-block">
+                <div id="info-images-left">
+                    <img src="../../../../assets/images/david.jpg">
+                </div>
                 <div id="info-text-right">
-                    <h2 id="info-title">Usar un Treemap</h2>
-                    <p id="info-paragraph">
-                    
+                    <h2 id="info-title" class="purple">David Escobar Ruiz</h2>
+                    <p id="info-paragraph" class="purple">
+                    Estudiante de Ingenieria de Sistemas y Matemáticas <br>
+                    https://www.linkedin.com/in/druiz35/ <br>
                     </p>
                 </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>      
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Piechart</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Distplot</h2>
-                    <p id="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
+            </div>|
         </div>
     </div>
 
