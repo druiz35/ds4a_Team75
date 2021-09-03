@@ -72,13 +72,14 @@
 
 #info-images-left{
     float: left;
+    width: 50%;
 }
 
 #info-text-right{
     font-family: "Alegreya Sans", sans-serif;
     text-align: justify;
     float: right;
-    width: 58%;
+    width: 100%;
 }
 
 h1{
@@ -96,6 +97,10 @@ h1{
 
 .blue {
     color: rgba(41, 179, 233, 1);
+}
+
+.white {
+    color: white;
 }
 
 #info-title {

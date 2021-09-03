@@ -10,105 +10,66 @@
             <h1>Análisis Exploratorio de los Datos</h1>
             <div id="info-block">
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="../../../../assets/images/tabla_BD.png">
                 </div>
                 <div id="info-text-right">
-                    <h2 id="info-title" class="purple">Navegación</h2>
-                    <p id="info-paragraph" class="purple">
-                    ¡Es muy sencillo navegar por nuestra aplicación! <br>
-                    Solo selecciona el ícono asignado a la sección que quieres visitar. <br>
+                    <h2 id="info-title" class="white">Descripción de los datos</h2>
+                    <p id="info-paragraph" class="white">
+                    Se usaron 3 archivos para entrenar los modelos: "BD_MinTic_2010_2020.xlsx", "Componentes_Dimensiones_2016_2019.xlsx" y "MDM_2016_2019.xlsx",
+                    junto con datos adicionales de la base de datos TerriData, que contiene datos de varios sitios oficiales. <br>
+                    Cada base de datos tenía tanto datos numéricos como datos categóricos.
                     </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="../../../../assets/images/tabla_Componentes.png">
                 </div>
             </div>
             <div id="info-block">
                 <div id="info-text-right">
-                    <h2 id="info-title" class="blue">El Dashboard: La joya de nuestra app</h2>
-                    <p id="info-paragraph" class="blue">
-                    El Dashboard está diseñado para visualizar los datos que se utilizaron para
-                    realizar las predicciones a futuro del estilo de vida de Colombia. 
-                    <br>
-                    Puedes agregar, eliminar e interactuar con los ocho tipos de gráficos que ofrecemos.
+                    <h2 id="info-title" class="white">Anális Exploratorio de los Datos</h2>
+                    <p id="info-paragraph" class="white">
+                    A continuación, presentamos un análisis exploratorio de datos a partir de los datos proporcionados por el MinTIC.En primer lugar, comenzamos por limpiar los conjuntos de datos, 
+                    que abarcó la estandarización de los nombres de las columnas para todas las tablas, la eliminación de caracteres no alfanuméricos y la sustitución de espacios por subrayados. 
+                    Muchos campos de la tabla Componentes_dimensiones eran coberturas, pero tenían medidas inconsistentes para distintos años (por ejemplo, medidas como porcentajes para algunos años y 
+                    como proporciones para otros), por lo que también estandarizamos todas las medidas de cobertura como proporciones entre 0 y 1. <br>
                     </p>
                 </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
                 <div id="info-text-right">
-                    <h2 id="info-title">Usar un Linechart</h2>
-                    <p class="info-paragraph">
-                    
+                    <p id="info-paragraph" class="white">
+                    En cuanto a la base de datos TerriData, el primer paso para hacer más manejable esta gran base de datos fue dividirla entre las dimensiones que contenía. Así, trabajamos con 18 tablas 
+                    separadas, una por dimensión. La limpieza de cada tabla consistió en comprobar si los datos estaban completos o no para cada variable. Se consideró que los datos de una variable estaban 
+                    completos cuando cumplía con dos condiciones: i) tenía una terminación territorial, es decir, cada entidad territorial tenía una medida asociada para la variable, y ii) tenía una 
+                    terminación temporal, es decir, para cada entidad territorial que había en mediciones mínimas para los años 2016, 2017 y 2018. Si no se cumplía una de las dos condiciones, filtramos la 
+                    variable. También decidimos filtrar las variables que tenían mediciones más de una vez al año, ya que no podíamos estar seguros de cuál era la primera o la última medición del año y 
+                    qué mediciones eran parciales para ese año. <br>
                     </p>
                 </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
                 <div id="info-text-right">
-                    <h2 id="info-title">Usar un Stripplot</h2>
-                    <p class="info-paragraph">
-                    
+                    <p id="info-paragraph" class="white">
+                    Además, hubo algunas variables como el PIB (pib en la base de datos) que se midieron solo a nivel de departamento, pero no a nivel municipal, por lo que al final hicimos dos conjuntos 
+                    de datos para trabajar: un conjunto de datos para el nivel municipal y otro para el nivel de departamento. También resumimos todas las inversiones del MinTIC, primero por municipio 
+                    y segundo por departamento para incluirlo como variable independiente en nuestros modelos. <br>
                     </p>
                 </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
+                
                 <div id="info-text-right">
-                    <h2 id="info-title">Usar un Geograph</h2>
-                    <p class="info-paragraph">
-                    
+                    <p id="info-paragraph" class="white">
+                    A nivel municipal obtuvimos en total 171 variables con 4404 observaciones, que comprenden el período 2016-2019 (1101 observaciones por año), mientras que obtuvimos 209 variables con 3303 
+                    observaciones que comprenden el período 2016-2018. No faltaron datos aparte de todo el año 2019 para 38 variables. A nivel departamental obtuvimos en total 169 variables con 132 
+                    observaciones, que comprenden el período 2016-2019 (33 observaciones por año), mientras que obtuvimos 242 variables con 99 observaciones para el período 2016-2018. Las variables con datos 
+                    para los cuatro años no tenían datos faltantes, mientras que algunas variables para el período 2016-2018 tenían algunos datos faltantes (entre tres y seis observaciones para cada variable). 
+                    Imputamos estos datos faltantes utilizando la media anual de la variable respectiva. <br>
                     </p>
                 </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
                 <div id="info-text-right">
-                    <h2 id="info-title">Usar un Bargraph</h2>
-                    <p class="info-paragraph">
-                    
+                    <p id="info-paragraph" class="white">
+                    Un dato importante sobre nuestros datos, y específicamente sobre la variable de inversiones MinTIC es que, en el caso de los municipios, más del 60% de los datos estuvieron por debajo de COP $ 1e8 
+                    y más del 15% de los datos fue efectivamente igual a COP $ 0. , mientras que el valor máximo fue del orden de COP $ 7e10 (Figura 1), lo que lo hace muy sesgado a la derecha y, de hecho, muy difícil 
+                    de usar como variable independiente para nuestro modelo. Es por eso que decidimos usar solo el nivel de departamento, ya que tiene menos valores de COP $ 0 y está menos sesgado (Figura 2). <br>
                     </p>
                 </div>
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Treemap</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>      
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Piechart</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Distplot</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="../../../../assets/images/Eda.png">
                 </div>
             </div>
         </div>
@@ -120,110 +81,30 @@
         </div>
         <div id="info_container" *ngIf="panelExpandedCyr">
             <mat-icon [ngStyle]="{'color': 'white'}" id="go_back" (click)="panelExpandedCyr = !panelExpandedCyr; hiddenEda = !hiddenEda; hiddenCyr = !hiddenCyr;">arrow_back_ios</mat-icon>
-            <h1>¿Cómo usar esta aplicación?</h1>
+            <h1>Conclusiones y Recomendaciones</h1>
             <div id="info-block">
                 <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
+                    <img src="(../../../../assets/images/model_conclusions.png" width="1000px">
                 </div>
                 <div id="info-text-right">
-                    <h2 id="info-title">Navegación</h2>
-                    <p id="info-paragraph">
-                    ¡Es muy sencillo navegar por nuestra aplicación! <br>
-                    Solo selecciona el ícono asignado a la sección que quieres visitar. <br>
-                    </p>
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">El Dashboard: La joya de nuestra app</h2>
-                    <p id="info-paragraph">
-                    El Dashboard está diseñado para visualizar los datos que se utilizaron para
-                    realizar las predicciones a futuro del estilo de vida de Colombia. 
+                    <p id="info-paragraph" class="white">
+                    Los tres modelos aplicados fueron similares en su rendimiento en la predicción de valores del grupo de testeo. <br>
+                    El modelo con menor error fue el modelo de regresión XGB, mientras que el modelo con mayor error fue el modelo Random Forest.
+                    Entre las variables más importantes para explicar la variabilidad en los modelos se encuentran Población Rural, Densidad de Población y PIB, que 
+                    no son muy sorprendentes ya que sabemos que la calidad de vida depende en gran medida de la economía y la demografía de la sociedad.
                     <br>
-                    Puedes agregar, eliminar e interactuar con los ocho tipos de gráficos que ofrecemos.
                     </p>
                 </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
                 <div id="info-text-right">
-                    <h2 id="info-title">Usar un Linechart</h2>
-                    <p class="info-paragraph">
-                    
+                    <p id="info-paragraph" class="white">
+                    Sin embargo, después de modelar nuestras tres estrategias, no encontramos una relación estadísticamente significativa entre las inversiones MinTIC 
+                    y el índice de calidad de vida, lo cual es decepcionante pero no inesperado, ya que la calidad de vida es un fenómeno complejo relacionado con 
+                    múltiples fuentes de variabilidad.  <br>
+                    También pensamos que es necesario tener una cobertura más temporal de los datos para captar mejor la relación matizada entre las inversiones en tecnologías 
+                    de la información y las comunicaciones y la calidad de vida de una sociedad.Es necesario realizar un análisis más detallado y considerar diferentes enfoques 
+                    de la calidad de vida para determinar las correlaciones deseadas. <br>
                     </p>
                 </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Stripplot</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Geograph</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Bargraph</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Treemap</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>      
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Piechart</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-            <div id="info-block">
-                <div id="info-text-right">
-                    <h2 id="info-title">Usar un Distplot</h2>
-                    <p class="info-paragraph">
-                    
-                    </p>
-                </div>
-                <div id="info-images-left">
-                    <img src="(../../../../assets/images/iconos_barra.png">
-                </div>
-            </div>
-        </div>
+            </div>  
     </div>
 </div> 

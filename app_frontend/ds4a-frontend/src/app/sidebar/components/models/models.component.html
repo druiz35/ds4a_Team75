@@ -47,9 +47,32 @@
                     <img src="(../../../../assets/images/randomforest_graph.png">
                 </div>
                 <div id="info-text-right">
-                    <p id="info-paragraph">
-                    
+                    <p id="info-paragraph" class="white">
+                    El proceso usado para la elección y utilización del modelo Random Forest se puede dividir en 10 pasos. <br>
+                    Primero, se planteó la pregunta "¿Cuál es el impacto de las inversiones del MinTic a la Calidad de Vida en Colombia?". <br>
+                    Segundo, se descargaron datos adicionales para complementar las variables existentes
+                    relacionadas con el cálculo de la calidad de vida según la Medida de Desempeño Municipal (MDM). <br>
+                    Tercero, los datos fueron limpiados y ajustados con Python. <br>
+                    Cuarto, los datos fueron preparados para el modelo de Random Forest. Esto es, se seleccionó la variable
+                    "promedio_del_componente_de_resultados_por_departamento_y_nacion" como la variable a predecir. <br>
+                    Quinto, se tomó ventaja del máximo y mínimo de la variable de interés como base. <br>
+                    Sexto, se entrenó el modelo en una proporción de 75% entrenamiento -25% testeo. <br>
+                    Séptimo, las predicciones se realizaron, resultando en que las inversiones del MinTic no
+                    contribuyen demasiado a la Calidad de Vida. <br>
                     </p>
+                </div>
+                <div id="info-images-left">
+                    <img src="(../../../../assets/images/randomforest_graph_2.png">
+                </div>
+                <div id="info-text-right">
+                    <p id="info-paragraph" class="white">
+                    Séptimo, las predicciones se realizaron, resultando en que las inversiones del MinTic no
+                    contribuyen demasiado a la Calidad de Vida. <br>
+                    Octavo, se compararon los resultados del set de entrenamiento y testeo, confirmando el resultado
+                    anterior. <br>
+                    Noveno, se decidió que no se iba a cambiar el modelo inicial debido a su rendimiento. <br>
+                    Por último, se concluyó que la variable con mayor impacto en la calidad de vida es "población_rural".
+                   </p>
                 </div>
             </div>
         </div>
@@ -68,25 +91,29 @@
                     </div>
                     <div id="info-text-right">
                         <p id="info-paragraph" class="white">
-                        XGBoost es una biblioteca optimizada de aumento de gradiente 
-                        distribuida diseñada para ser altamente eficiente, flexible y 
-                        portátil. Implementa algoritmos de aprendizaje automático bajo 
-                        el marco Gradient Boosting. <br>
-                        XGBoost ofrece muchas herramientas 
-                        para Machine Learning, una de ellas es el modelo de Regresión, 
-                        implementado en este cuaderno, que nos permite generar un modelo 
-                        de predicción, y da luz sobre cuáles podrían ser las principales 
-                        variables y su importancia para hacer una predicción sobre la variable. 
-                        elegimos como representación de la Calidad de Vida. <br>
-                        La forma en que 
-                        funciona el modelo es generando un árbol de decisión a partir de la 
-                        etapa del tren y el uso de este árbol para realizar una predicción con 
-                        los datos de prueba o cualquier dato que tenga las características 
-                        involucradas.
+                        Para el modelado utilizamos datos de 2016 a 2018, utilizando las características que encontramos con información completa para todos los departamentos. 
+                        Luego, eliminamos las características que estaban altamente correlacionadas, se desintegraron en otras características o no eran relevantes para todos los 
+                        departamentos y procedimos a hacer un modelo inicial. Usamos errores robustos de HC3 para dar cuenta de una posible heterocedasticidad en la varianza de los errores.
                         </p>
+                    </div>
+                    <div id="info-images-left">
+                        <img src="(../../../../assets/images/ols_graph_8.jpeg">
+                    </div>
+                    <div id="info-text-right">
+                        <p id="info-paragraph" class="white">
+                        Luego procedimos a reducir aún más las características eliminando las menos significativas una por una. Empleamos el 75% del conjunto de datos como 
+                        entrenamiento y el 25% como prueba para el modelo. Por el simple hecho de considerar la importancia de las funciones de inversión, no las eliminamos 
+                        aunque no fueran significativas.
+                        </p>
+                    </div>
+                    <div id="info-images-left">
+                        <img src="(../../../../assets/images/ols_graph_6.png">
                     </div>
                 </div>
         </div>
+
+
+
 
     </div>
 </div>

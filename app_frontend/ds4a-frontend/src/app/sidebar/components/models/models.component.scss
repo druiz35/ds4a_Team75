@@ -24,25 +24,22 @@
     opacity: 0.7;
 }
 
-.model_1 {
+.model_1, .model_3 {
     background-image: url("../../../../assets/images/ai1.jpg");
     background-size: cover;
+    background-position: -100px;
 }
 
-.model_2 {
+.model_conclusions, .model_2 {
     background-image: url("../../../../assets/images/ai2.jpg");
     background-size: cover;
-}
-
-.model_3 {
-    background-image: url("../../../../assets/images/ai1.jpg");
-    background-size: cover;
+    background-position: -100px;
 }
 
 #button_title {
     position: relative;
     color: white;
-    font-size: 36px;
+    font-size: 29px;
     text-align: center;
     font-family: "Alegreya Sans", sans-serif;
     font-weight: bold;
